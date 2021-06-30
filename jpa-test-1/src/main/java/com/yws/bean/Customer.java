@@ -80,6 +80,10 @@ public class Customer {
      *  可以使用 @OneToMany 的cascade属性来修改默认的删除策略
      *  注意：若在1的一端的 @OneToMany 中使用mappedBy属性，则@OneToMany端就不能再使用@JoinColumn属性了
      */
+    /**
+     * orphanRemoval = true 时，如果cascade为CascadeType.ALL, 持久化对象的子集合，进行remove方法时，也会删除数据库里的记录
+     * orphanRemoval = false时，如果cascade为CascadeType.ALL, 持久化对象的子集合，进行remove方法时，不会删除数据库里的记录
+     */
     //@JoinColumn(name = "customer_id")
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE}, mappedBy = "customer")
     public Set<Order> getOrders() {
